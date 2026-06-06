@@ -1,0 +1,1722 @@
+/* ── FONTS ── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap');
+
+/* ── RESET ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+.nav-links a {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+/* animated underline that grows from left */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 1.5px;
+  background: #efdc0d;           /* matches your hero green accent */
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.nav-link--active::after {
+  width: 100%;
+}
+
+.nav-links a.nav-link--active {
+  color: #d2a10d;
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── NAVBAR ── */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 80px;
+  background:transparent;
+  backdrop-filter: none;
+  transition: background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  background: white;
+}
+
+.logotext {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+.logotext span {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c9a84c;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover { color: #c9a84c; }
+
+.nav-book {
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #1a1a18;
+  background: #c9a84c;
+  padding: 0.65rem 1.6rem;
+  transition: background 0.25s, transform 0.2s;
+}
+
+.nav-book:hover {
+  background: #b8943d;
+  transform: translateY(-1px);
+}
+#navbar a,
+#navbar .logotext {
+  color: #f0ede5;
+}
+
+#navbar.scrolled {
+  background: rgba(2, 4, 3, 0.92);
+  backdrop-filter: blur(8px);
+  box-shadow:  0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+#navbar.scrolled .nav-links a,
+#navbar.scrolled .logotext { color: #1a1a18; }
+#navbar.scrolled .logotext span { color: #c9a84c; }
+
+
+/* ════════════════════════════
+   HERO SECTION
+════════════════════════════ */
+.villa-about {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.about-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(2px) brightness(0.52);
+  transform: scale(1.05);
+}
+
+.villa-about::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.38) 55%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+}
+
+.about-text {
+  position: absolute;
+  z-index: 2;
+  bottom: 10%;
+  left: 6%;
+  max-width: 44%;
+  color: #fff;
+  text-align: left;
+}
+
+.about-text h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 1.1rem;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.45);
+}
+
+.about-text h1 .highlight {
+  font-style: italic;
+  color: #c9a84c;
+}
+
+.about-text p {
+  font-family: 'Jost', sans-serif;
+  font-size: clamp(0.88rem, 1.1vw, 1rem);
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
+
+.about-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.btn {
+  display: inline-block;
+  min-width: 270px;
+  padding: 15px 32px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-booking {
+  background: #c9a84c;
+  color: #1a1a1a;
+  border: 2px solid #c9a84c;
+}
+
+.btn-booking:hover {
+  background: #b8952f;
+  border-color: #b8952f;
+}
+
+.btn-explore {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.btn-explore:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+
+.img-badge {
+  position: absolute;
+  z-index: 2;
+  bottom: 5%;
+  right: 2%;
+  width: clamp(150px, 23vw, 300px);
+  background: rgba(35, 33, 24, 0.88);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  padding: 2rem 2.5rem;
+  text-align: center;
+  color: #fff;
+}
+
+.badge-score {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  color: #c9a84c;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.badge-label {
+  font-family: 'Jost', sans-serif;
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.9rem;
+}
+
+.badge-sub {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 2;
+}
+
+
+/* ════════════════════════════
+   FACILITIES STRIP
+════════════════════════════ */
+.facilities {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  background: rgba(20, 18, 12, 0.92);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 16px;
+  cursor: pointer;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  transition: background 0.25s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.box:last-child {
+  border-right: none;
+}
+
+.box::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #c9a84c;
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.box:hover::after {
+  transform: scaleX(1);
+}
+
+.box:hover {
+  background: rgba(201, 168, 76, 0.08);
+  transform: translateY(-2px);
+}
+
+.box h4 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-weight: 500;
+  color: #c9a84c;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+.box p {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+
+/* ════════════════════════════
+   INTRO SECTION
+════════════════════════════ */
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.intro-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.intro-text {
+  background: #1e1c14;
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.intro-text h3 {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 1.2rem;
+}
+
+.intro-text h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #f5f0e8;
+  margin-bottom: 1.8rem;
+}
+
+.intro-text p {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.65);
+  margin-bottom: 1rem;
+}
+
+.intro-stats {
+  display: flex;
+  gap: 40px;
+  margin: 1.8rem 0 2.2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-box h4 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 400;
+  color: #c9a84c;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.intro-box p {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.45);
+  margin: 0;
+}
+
+.host {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 24px;
+  border-left: 2px solid #c9a84c;
+  background: rgba(201, 168, 76, 0.06);
+  margin-top: 0.5rem;
+}
+
+.host-avatar {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #6b3f2a;
+  color: #f5e6d8;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.host-info p:first-child {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #f5f0e8;
+  margin: 0 0 3px 0;
+}
+
+.host-info p:last-child {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: rgba(245, 240, 232, 0.5);
+  margin: 0;
+}
+
+
+/* ════════════════════════════
+   RESPONSIVE
+════════════════════════════ */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  #navbar { padding: 0 1.25rem; }
+
+  .about-text {
+    max-width: 85%;
+    bottom: 8%;
+    left: 5%;
+  }
+
+  .about-text h1 { font-size: clamp(2rem, 8vw, 3rem); }
+
+  .img-badge {
+    top: 10%;
+    width: clamp(160px, 55vw, 240px);
+    padding: 1.2rem 1.5rem;
+  }
+
+  .btn { min-width: 220px; }
+
+  .intro {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-img {
+    height: 50vw;
+    min-height: 260px;
+  }
+
+  .intro-text {
+    padding: 48px 28px;
+  }
+
+ .intro-stats {
+  display: flex;
+  gap: 40px;
+  margin: 1.8rem 0 2.2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+}
+/* ════════════════════════════
+   GALLERY SECTION
+════════════════════════════ */
+.gallery-section {
+  background: #1a1812;
+  padding: 80px 0 100px;
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.gallery-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 1rem;
+}
+
+.gallery-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 400;
+  color: #f5f0e8;
+}
+
+/* ── Tabs ── */
+.gallery-tabs {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  margin-bottom: 48px;
+  padding: 0;
+}
+
+.gallery-tabs li a {
+  display: block;
+  padding: 12px 28px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.4);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.gallery-tabs li a:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.gallery-tabs li a.active {
+  color: #c9a84c;
+  border-bottom-color: #c9a84c;
+}
+
+/* ── Grid ── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding: 0 3px;
+}
+
+.gallery-item {
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* ── Preview backdrop ── */
+.preview-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Preview window — small, not fullscreen ── */
+.preview-window {
+  position: relative;
+  width: clamp(600px, 60vw, 820px);
+  background: #1a1812;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  overflow: hidden;
+}
+
+.preview-window img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 80vh;
+  object-fit: cover;
+}
+
+.preview-caption {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  padding: 14px 20px;
+  margin: 0;
+  border-top: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+.preview-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: #fff;
+  font-size: 0.85rem;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.2s;
+}
+
+.preview-close:hover {
+  background: rgba(201, 168, 76, 0.5);
+}
+
+/* ── zoom icon on hover ── */
+.gallery-zoom-icon {
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.preview-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  color: #fff;
+  font-size: 2rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  z-index: 10;
+  line-height: 1;
+}
+
+.preview-arrow:hover {
+  background: rgba(201, 168, 76, 0.4);
+}
+
+.preview-arrow.left  { left: 10px; }
+.preview-arrow.right { right: 10px; }
+
+.preview-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-top: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+.preview-caption {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+.preview-counter {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  color: rgba(201, 168, 76, 0.7);
+  letter-spacing: 0.1em;
+}
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-tabs li a {
+    padding: 10px 14px;
+    font-size: 0.65rem;
+  }
+}
+
+/* ════════════════════════════════════════════════
+   FACILITIES SECTION — sticky left panel fix
+   Replace the existing .Facilities block in App.css
+════════════════════════════════════════════════ */
+
+.Facilities {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  /* REMOVED min-height — let the right column dictate height */
+  background: #151512;
+  align-items: start;          /* ← KEY: lets each column sit at its own top */
+}
+
+/* ── Left panel — sticky ── */
+.left-box {
+  padding: 70px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 80px;                   /* ← clears the fixed navbar (80px tall) */
+  height: 100%; 
+  background: #2b2921;
+  border-right: 1px solid rgba(201, 168, 76, 0.15);
+  /* NO overflow: hidden — that would break sticky */
+}
+
+.left-box h4 {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 1rem;
+}
+
+.left-box h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #f5f0e8;
+  line-height: 1.15;
+  margin-bottom: 1.2rem;
+}
+
+.left-box > p {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.55);
+  margin-bottom: 2rem;
+}
+
+.facility-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.greenbox {
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  padding: 10px 22px;
+}
+
+.greenbox p {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: #c9a84c;
+  margin: 0;
+}
+
+/* ── Right panel — scrolls naturally ── */
+.right-box {
+  padding: 30px 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  align-content: start;
+}
+
+.brownshadow-box {
+  background: #1a1812;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 26px 22px;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  cursor: default;
+}
+
+.brownshadow-box:hover {
+  background: #222016;
+  border-color: rgba(201, 168, 76, 0.2);
+  transform: translateY(-4px);
+}
+
+.icon {
+  font-size: 1.6rem;
+  margin-bottom: 14px;
+  line-height: 1;
+}
+
+.brownshadow-box h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #f5f0e8;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.brownshadow-box p {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(245, 240, 232, 0.45);
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .right-box {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .Facilities {
+    grid-template-columns: 1fr;
+  }
+
+  /* On mobile, unstick — just stack vertically */
+  .left-box {
+    position: static;
+    height: auto;
+    padding: 50px 28px;
+  }
+
+  .right-box {
+    grid-template-columns: 1fr;
+    padding: 20px 28px 60px;
+  }
+}
+
+.rules {
+  background: #0f0e0a;
+  padding: 50px 80px;
+  text-align: center;
+  border-top: 1px solid rgba(201, 168, 76, 0.12);
+}
+ 
+/* ── Eyebrow label ── */
+.rules > p {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 0.8rem;
+  margin-top: 1rem;
+}
+ 
+/* ── Heading ── */
+.rules > h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 600;
+  font-style: italic;
+  color: #f5f0e8;
+  margin: 0 0 56px;
+  line-height: 1.2;
+}
+ 
+/* ── Grid ── */
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 80%;
+  margin: 0 auto;
+}
+ 
+/* ── Each card ── */
+.rule-box {
+  background: #333230;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 40px 28px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  cursor: default;
+  
+}
+ 
+.rule-box:hover {
+  background: #1e1c14;
+  border-color: rgba(201, 168, 76, 0.22);
+  transform: translateY(-4px);
+}
+ 
+/* ── Icon ── */
+.rule-box .icon {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+ 
+.rule-box:hover .icon {
+  background: rgba(201, 168, 76, 0.13);
+}
+ 
+/* ── Rule title ── */
+.rule-box h4 {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin: 0;
+}
+ 
+/* ── Rule body ── */
+.rule-box p {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(245, 240, 232, 0.55);
+  margin: 0;
+}
+ 
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .rules {
+    padding: 60px 5%;
+  }
+ 
+  .rules-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+ 
+@media (max-width: 480px) {
+  .rules-grid {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+ 
+  .rules > h2 {
+    margin-bottom: 36px;
+  }
+}
+
+/* ════════════════════════════
+   LOCATION SECTION
+════════════════════════════ */
+.Location {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+}
+
+/* ── Map ── */
+.location-map {
+  position: relative;
+  overflow: hidden;
+}
+
+.location-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  border: none;
+  display: block;
+  filter: grayscale(20%) contrast(1.05);
+}
+
+/* ── Right text panel ── */
+.distance {
+  background: #151512;
+  padding: 80px 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+.distance h4 {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 1rem;
+}
+
+.distance h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 600;
+  color: #f5f0e8;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+
+.distance > p {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.55);
+  margin-bottom: 2rem;
+}
+
+/* ── Places + distances side by side ── */
+.place {
+  flex: 1;
+}
+
+.distance > div:has(.place, .km) {
+  display: flex;
+  gap: 0;
+}
+
+/* wrapping div around place + km */
+.location-list {
+  display: flex;
+  gap: 0;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(201, 168, 76, 0.12);
+}
+
+.place ul,
+.km ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.place ul {
+  flex: 1;
+  border-right: 1px solid rgba(201, 168, 76, 0.12);
+  text-align: left;
+} 
+
+.km ul {
+  min-width: 80px;
+  text-align: right;
+}
+
+.place ul li,
+.km ul li {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(245, 240, 232, 0.7);
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.place ul li:last-child,
+.km ul li:last-child {
+  border-bottom: none;
+}
+
+.place ul li:hover,
+.km ul li:hover {
+  color: #c9a84c;
+  background: rgba(201, 168, 76, 0.05);
+}
+
+.km ul li {
+  color: #c9a84c;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+/* ── Google Maps link ── */
+.distance > a {
+  display: inline-block;
+  margin-top: 1.8rem;
+  padding: 13px 120px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #1a1a1a;
+  background: #c9a84c;
+  align-items: center;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.distance > a:hover {
+  background: #b8943d;
+  transform: translateY(-2px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .Location {
+    grid-template-columns: 1fr;
+  }
+
+  .location-map {
+    height: 50vw;
+    min-height: 280px;
+  }
+
+  .distance {
+    padding: 48px 28px;
+  }
+}
+
+/* ════════════════════════════════════════════════
+   REVIEWS SECTION — dark gold theme
+   Replace your entire reviews block in App.css
+════════════════════════════════════════════════ */
+
+.reveiws {
+  width: 100%;
+  background: #1c1b18;
+  padding: 90px 6%;
+  box-sizing: border-box;
+  text-align: left;
+  border-top: 1px solid rgba(201, 168, 76, 0.12);
+}
+
+/* ── Eyebrow ── */
+.reveiws > h4 {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 0.8rem;
+}
+
+/* ── Heading ── */
+.reveiws > h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400;
+  font-style: italic;
+  color: #f5f0e8;
+  margin: 0 0 48px;
+  line-height: 1.2;
+}
+
+
+/* ════════════════════
+   SCORE GRID
+════════════════════ */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 100%;
+  margin: 0 0 48px;
+}
+
+.review-box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10px;
+  background: #1a1812;
+  border: 1px solid rgba(201, 168, 76, 0.08);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.review-box:hover {
+  background: #1e1c14;
+  border-color: rgba(201, 168, 76, 0.25);
+}
+
+.condition {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: rgba(245, 240, 232, 0.55);
+  text-transform: none;
+}
+
+.marks {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #c9a84c;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-align: right;
+}
+
+
+/* ════════════════════
+   GUEST REVIEW CARDS
+════════════════════ */
+.guest-reveiws {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  width: 100%;
+}
+
+/* ── Single card ── */
+.marinoni,
+.laurie {
+  background: #1a1812;
+  border: 1px solid rgba(201, 168, 76, 0.08);
+  padding: 30px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.marinoni:hover,
+.laurie:hover {
+  background: #1e1c14;
+  border-color: rgba(201, 168, 76, 0.22);
+  transform: translateY(-3px);
+}
+
+/* ── Reviewer header row ── */
+.intro-review {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Avatar circle */
+.intro-review .icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(201, 168, 76, 0.25);
+}
+
+.intro-review .icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.marinoni .intro-review .icon { background: #2a4a38; }
+.laurie  .intro-review .icon  { background: #243a4a; }
+
+/* Name block */
+.name {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #f5f0e8;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+/* Flag / country — slightly muted */
+.name br ~ * {
+  color: rgba(245, 240, 232, 0.45);
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+
+/* ── Stars + quote ── */
+.para-review {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.para-review p:first-child {
+  font-size: 0.85rem;
+  color: #c9a84c;
+  letter-spacing: 0.08em;
+  margin: 0;
+  line-height: 0.8;
+}
+
+.para-review p:last-child {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.8;
+  color: rgba(245, 240, 232, 0.6);
+  margin: 0;
+}
+
+
+/* ════════════════════
+   RESPONSIVE
+════════════════════ */
+@media (max-width: 900px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .reveiws {
+    padding: 60px 5% 70px;
+  }
+
+  .reveiws > h2 {
+    margin-bottom: 36px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    margin-bottom: 32px;
+  }
+
+  .guest-reveiws {
+    grid-template-columns: 1fr;
+  }
+
+  .marinoni,
+  .laurie {
+    padding: 28px 22px;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap');
+
+/* ── ROOT / SECTION ── */
+.reserve {
+  font-family: 'Montserrat', sans-serif;
+  background: #2c2820;
+  color: #e8dcc8;
+  padding: 72px 48px 10px;
+  text-align: center;
+}
+
+.reserve h4 {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #5e5448;
+  margin-bottom: 20px;
+}
+
+.reserve > h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: #f0e8d8;
+  line-height: 1.1;
+  margin-bottom: 22px;
+}
+
+.reserve > p {
+  font-size: 14px;
+  font-weight: 300;
+  color: #a89880;
+  line-height: 1.85;
+  max-width: 560px;
+  margin: 0 auto 48px;
+  letter-spacing: 0.02em;
+}
+
+/* ── BOOK CARD ── */
+.book-card {
+  background: #332e26;
+  border: 1px solid #4a4236;
+  border-radius: 3px;
+  padding: 48px 52px;
+  max-width: 560px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.book-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  font-style: italic;
+  color: #c8a96e;
+  letter-spacing: 0.05em;
+  margin-bottom: 18px;
+}
+
+.book-card h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: #f0e8d8;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+/* target the "per night · room only" paragraph */
+.book-card p:first-of-type {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7a6e5e;
+  margin-bottom: 20px;
+}
+
+/* target the amenities paragraph */
+.book-card p:last-of-type {
+  font-size: 13px;
+  font-weight: 300;
+  color: #a89880;
+  letter-spacing: 0.03em;
+  line-height: 1.7;
+  margin-bottom: 34px;
+}
+
+/* ── CTA BUTTON ── */
+.availability a {
+  display: block;
+  background: #c8a96e;
+  color: #1e1a14;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 36px;
+  border-radius: 2px;
+  transition: background 0.2s ease;
+}
+
+.availability a:hover { background: #b8943a; }
+
+/* ── DIVIDER ── */
+.reserve hr {
+  border: none;
+  border-top: 1px solid #3e3830;
+  margin: 0 0 44px;
+}
+
+/* ── BOOKING BOXES ── */
+.booking-boxes {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 48px 64px;
+}
+
+.options {
+  text-align: center;
+  padding: 0 8px;
+  border-right: 1px solid #3e3830;
+}
+
+.options:last-child { border-right: none; }
+
+.options p {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #5e5448;
+  margin-bottom: 10px;
+}
+
+.options h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #c8a96e;
+  line-height: 1.3;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #1e1a14;
+  padding: 48px 64px;
+  border-top: 1px solid #3e3830;
+}
+
+.footer-text {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 32px;
+}
+
+/* ── LEFT: LOGO ── */
+.left-text {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.left-text img {
+  width: 64px;
+  height: 64px;
+  opacity: 0.55;
+  filter: grayscale(1) brightness(1.4);
+  border: 1px solid #4a4236;
+}
+
+.left-text span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: #c8c0b0;
+}
+
+/* ── CENTER: ADDRESS ── */
+.middle-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: left;
+}
+
+.middle-text p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: #7a6e5e;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+}
+
+.middle-text a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: opacity 0.2s;
+}
+
+.footer-link--booking { color: #c8a96e; }   /* gold */
+.footer-link--maps    { color: #6b9e8c; }   /* teal */
+.footer-link--fb      { color: #7b9ec8; } 
+
+.middle-text a:hover { opacity: 0.75; }
+
+/* ── RIGHT: COPYRIGHT ── */
+.right-text {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.right-text p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: #7a6e5e;
+  letter-spacing: 0.01em;
+  line-height: 1.65;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  footer { padding: 40px 28px; }
+
+  .footer-text {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .right-text { text-align: left; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .reserve { padding: 48px 24px 40px; }
+  .reserve > h2 { font-size: 38px; }
+  .book-card { padding: 36px 28px; }
+  .booking-boxes { grid-template-columns: repeat(3, 1fr); padding: 0 24px 48px; }
+  .options { border-right: none; border-bottom: 1px solid #3e3830; padding-bottom: 16px; }
+  footer { padding: 32px 24px; }
+  .middle-text { text-align: left; }
+}
+
+/* ── WHATSAPP FLOATING BUTTON ── */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: #25d366;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+
+  padding: 13px 20px 13px 16px;
+  border-radius: 50px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+
+  transition: background 0.2s ease, transform 0.15s ease, padding 0.3s ease;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.whatsapp-btn:hover {
+  background: #1da851;
+  transform: translateY(-2px);
+}
+
+/* Collapse to icon-only on scroll — add .scrolled via JS */
+.whatsapp-btn.scrolled span {
+  display: none;
+}
+
+.whatsapp-btn.scrolled {
+  padding: 14px;
+  border-radius: 50%;
+}
+
+/* Mobile: always icon-only */
+@media (max-width: 600px) {
+  .whatsapp-btn span { display: none; }
+  .whatsapp-btn { padding: 14px; border-radius: 50%; bottom: 20px; right: 20px; }
+}
+
