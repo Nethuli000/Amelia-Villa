@@ -1,16 +1,31 @@
-# React + Vite
+# Amelia Villa 🌴
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive hospitality website for **Amelia Villa** — a private beachside guesthouse located in Gandara West, Dondra, Sri Lanka. Built with React and designed to reflect the villa's warm, luxury aesthetic.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Full-screen hero section with booking CTA
+- Filterable photo gallery with lightbox preview
+- Amenities and house rules sections
+- Embedded Google Maps with nearby attractions
+- Guest reviews with Booking.com scores
+- Reservation section linked to Booking.com
+- Floating WhatsApp contact button
+- SEO-optimised with Open Graph, Twitter Card & JSON-LD structured data
+- Fully responsive across mobile, tablet and desktop
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React** (Vite)
+- **CSS** — custom, no UI framework
+- **Google Fonts** — Cormorant Garamond, Jost, Montserrat
+- **Google Maps** embed
+- **Booking.com** integration
 
-## Expanding the ESLint configuration
+## Live Site
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+[ameliavilla.lk](https://www.ameliavilla.lk) <!-- update when deployed -->
+
+## Credits
+
+Designed and developed for Amelia Villa, hosted by Vipul Sellahewa.
