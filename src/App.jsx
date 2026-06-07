@@ -279,7 +279,7 @@ function App() {
             <p>Hosted by Vipul Sellahewa</p>
             <a className="footer-link--booking" href="https://www.booking.com/hotel/lk/amelia-villa.en-gb.html" target="_blank" rel="noopener noreferrer">Book on Booking.com</a>
             <a className="footer-link--maps" href="https://www.google.com/maps/place/Amelia+Villa/@5.9278397,80.5959648,17z" target="_blank" rel="noopener noreferrer">Google Maps</a>
-            <a className="footer-link--fb" href="https://www.facebook.com/YOUR_CHANNEL" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a className="footer-link--fb" href="https://web.facebook.com/profile.php?id=61584272615977&rdid=ijRBqFbcKq42Qo4p&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2F18jKadrDKn%2F%3F_rdc%3D1%26_rdr#" target="_blank" rel="noopener noreferrer">Facebook</a>
           </div>
           <div className="right-text">
             <p>© 2026 Amelia Villa · All rights reserved</p>
