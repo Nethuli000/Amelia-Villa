@@ -105,7 +105,7 @@ function App() {
 
       <div className="intro">
         <div className="intro-img">
-          <img src="img2.jpg" alt="Villa interior" />
+          <img src="/img2.jpg" alt="Villa interior" />
         </div>
         <div className="intro-text">
           <h3>About Amelia Villa</h3>
@@ -224,7 +224,7 @@ function App() {
         <div className="guest-reveiws">
           <div className="marinoni">
             <div className="intro-review">
-              <div className="icon"><img src="marinoni.ico" alt="Marinoni" /></div>
+              <div className="icon"><img src="/marinoni.ico" alt="Marinoni" /></div>
               <div className="name">Marinoni<br />🇮🇹 Italy</div>
             </div>
             <div className="para-review">
@@ -234,7 +234,7 @@ function App() {
           </div>
           <div className="laurie">
             <div className="intro-review">
-              <div className="icon"><img src="laurie.ico" alt="Laurie" /></div>
+              <div className="icon"><img src="/laurie.ico" alt="Laurie" /></div>
               <div className="name">Laurie<br />🇻🇳 Vietnam</div>
             </div>
             <div className="para-review">
@@ -271,7 +271,7 @@ function App() {
       <footer>
         <div className="footer-text">
           <div className="left-text">
-            <img src="logo.ico" alt="Logo of the villa" />
+            <img src="/logo.ico" alt="Logo of the villa" />
             <span>AMELIA VILLA</span>
           </div>
           <div className="middle-text">
