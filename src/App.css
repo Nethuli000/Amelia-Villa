@@ -263,6 +263,7 @@ body {
   border-color: #fff;
 }
 
+/* ── EXISTING (keep as-is for desktop) ── */
 .img-badge {
   position: absolute;
   z-index: 2;
@@ -277,30 +278,32 @@ body {
   color: #fff;
 }
 
-.badge-score {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  font-weight: 400;
-  color: #c9a84c;
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
+/* ── ADD THIS mobile override ── */
+@media (max-width: 768px) {
+  .img-badge {
+    bottom: auto;
+    top: 12px;
+    right: 12px;
+    width: auto;
+    max-width: 44vw;
+    padding: 1rem 1.2rem;
+  }
 
-.badge-label {
-  font-family: 'Jost', sans-serif;
-  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.9rem;
-}
+  .badge-score {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    margin-bottom: 0.3rem;
+  }
 
-.badge-sub {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.68rem;
-  color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  line-height: 2;
+  .badge-label {
+    font-size: clamp(0.78rem, 3vw, 0.95rem);
+    margin-bottom: 0.6rem;
+  }
+
+  .badge-sub {
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+  }
 }
 
 
